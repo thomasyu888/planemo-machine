@@ -143,6 +143,7 @@ provisioners:
   - roles/galaxyprojectdotorg.galaxy_toolshed
   - roles/galaxyprojectdotorg.galaxy-extras
   - roles/smola.java
+  - roles/cwltools
   extra_arguments:
   - --extra-vars
   - galaxy_user_name={{ user `username` }}
