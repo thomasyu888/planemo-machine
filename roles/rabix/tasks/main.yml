@@ -1,0 +1,9 @@
+
+- name: Add rabix bunny
+  git: repo=git://github.com/rabix/bunny.git dest={{ rabix_bunny_path }} accept_hostkey=yes
+
+- name: Add rabix cottontail
+  git: repo=git://github.com/rabix/cottontail.git dest={{ rabix_cottontail_path }} accept_hostkey=yes
+
+- name: Add rabix runner
+  pip: name=rabix

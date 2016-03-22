@@ -49,3 +49,8 @@
   roles:
       - role: cwltools
         sudo: yes
+- hosts: localhost
+  connection: local
+  roles:
+      - role: rabix
+        sudo: yes
