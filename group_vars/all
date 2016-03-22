@@ -6,7 +6,7 @@
 # Used by galaxy-os
 add_system_users: no
 
-galaxyFS_base_dir: /opt/galaxy
+galaxyFS_base_dir: /opt/tools/galaxy
 galaxy_server_dir: "{{ galaxyFS_base_dir }}/galaxy-app"
 galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv"
 galxy_egg_cache: "/home/{{ galaxy_user_name }}/.python-eggs"
@@ -75,7 +75,7 @@ nginx_serve_planemo_machine_web: true
 planemo_machine_web_repo: git://github.com/jmchilton/planemo-machine-web.git
 planemo_machine_web_dir: "{{ galaxyFS_base_dir }}/planemo-machine-web"
 small_tool_conf: true
-small_tool_conf_path: /opt/galaxy/tool_conf.min.xml
+small_tool_conf_path: "{{ galaxyFS_base_dir }}/tool_conf.min.xml"
 
 galaxy_extras_config_ie_proxy: false
 
@@ -128,6 +128,8 @@ galaxy_config:
     "dynamic_proxy_manage": "False"
     "master_api_key": "{{ galaxy_master_api_key }}"
     "tool_sheds_config_file": "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
+    "filter-with": "proxy-prefix"
+    "cookie_path": "/galaxy"
   "uwsgi":
     "socket": "127.0.0.1:4001"
     "stats": "127.0.0.1:9191"
@@ -202,3 +204,6 @@ galaxy_config:
     "port": "{{ galaxy_handler0_port + 6}}"
     "use_threadpool": "True"
     "threadpool_workers": "{{ galaxy_handler_threadpool_workers }}"
+  "filter:proxy-prefix":
+    "use": "egg:PasteDeploy#prefix"
+    "prefix": "/galaxy"
