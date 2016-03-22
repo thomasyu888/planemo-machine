@@ -1,0 +1,6 @@
+
+- name: Download tophat CWL wrapper
+  git: repo=git://github.com/thomasyu888/SMC-RNA-Examples.git dest={{ smc_tophat_path }} accept_hostkey=yes
+
+
+

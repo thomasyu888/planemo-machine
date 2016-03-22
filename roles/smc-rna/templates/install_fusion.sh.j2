@@ -1,0 +1,7 @@
+#!/bin/bash
+
+mkdir build 
+cd build 
+cmake ../FusionEvaluator_0_1_0/ -DCMAKE_BUILD_TYPE=release 
+make
+mv {{ smc_evaluator_path }}/build/bin/fusionToolEvaluator /usr/local/bin/

@@ -1,0 +1,21 @@
+
+- name: Synapse Client
+  pip: name=synapseclient
+
+- name: Tornado
+  pip: name=tornado
+
+- include: fusionevaluator.yml
+
+- name: Install fusion evaluator
+  shell: "cd {{ smc_evaluator_path }} && ./install_fusion.sh"
+  sudo: True
+
+- include: tophatfusion.yml
+
+- name: Make Data directory
+  file: path=/opt/tools/data state=directory owner=ubuntu group=ubuntu mode="u=rxw,g=rxw,o=rx"
+
+- name: Make Download directory
+  file: path=/opt/tools/download state=directory owner=ubuntu group=ubuntu mode="u=rxw,g=rxw,o=rx"
+

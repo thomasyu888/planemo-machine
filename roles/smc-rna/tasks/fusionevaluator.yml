@@ -1,0 +1,7 @@
+
+- name: Add smc-fusion
+  git: repo=git://github.com/Sage-Bionetworks/SMC-RNA-Challenge.git dest={{ smc_evaluator_path }} accept_hostkey=yes
+
+- name: "Add smc-fusion installer"
+  template: src=install_fusion.sh.j2 dest={{ smc_evaluator_path }}/install_fusion.sh mode=a+x
+

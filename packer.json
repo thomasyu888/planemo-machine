@@ -214,7 +214,8 @@
         "roles/galaxyprojectdotorg.galaxy_toolshed", 
         "roles/galaxyprojectdotorg.galaxy-extras", 
         "roles/smola.java", 
-        "roles/cwltools"
+        "roles/cwltools", 
+        "roles/smc-rna"
       ], 
       "override": {
         "virtualbox-iso-vagrant": {

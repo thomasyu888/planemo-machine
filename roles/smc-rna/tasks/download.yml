@@ -1,0 +1,12 @@
+
+
+- name: Download Example Data
+  get_url: url={{ item }} dest=/opt/tools/download/
+  with_items:
+      - https://storage.googleapis.com/dream-smc-rna/sim1a_30m_1.fq.gz
+      - https://storage.googleapis.com/dream-smc-rna/sim1a_30m_2.fq.gz
+
+- name: Download Bowtie index
+  get_url: url={{ item }} dest={{ smc_tophat_path }}/bowtie_indexes/hg19.ebwt.zip
+  with_items:
+      - ftp://ftp.cbcb.umd.edu/pub/data/bowtie_indexes/hg19.ebwt.zip
