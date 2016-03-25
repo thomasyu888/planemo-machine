@@ -43,7 +43,7 @@
 - hosts: localhost
   connection: local
   tasks:
-    - file: path=/opt/tools/galaxy/tools state=directory owner=ubuntu
+    - file: path=/opt/tools state=directory owner=ubuntu
 - hosts: localhost
   connection: local
   roles:

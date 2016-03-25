@@ -19,3 +19,8 @@
 - name: Make Download directory
   file: path=/opt/tools/download state=directory owner=ubuntu group=ubuntu mode="u=rxw,g=rxw,o=rx"
 
+- name: Add tool directory mounting command
+  template: src=gce_mount_tool_disk.j2 dest=/usr/local/bin/gce_mount_tool_disk mode=a+x
+
+- name: chown data directory to ubuntu
+  shell: chown -R ubuntu:ubuntu /opt/tools/data
