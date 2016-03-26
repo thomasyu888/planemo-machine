@@ -69,6 +69,11 @@ galaxy_docker_volumes_from: ""
 
 galaxy_master_api_key: HSNiugRFvgT574F43jZ7N9F3
 
+nginx_use_passwords: True
+nginx_htpasswds:
+  - "admin:WiBKbsJTSQ8dc"
+  - "planemo:8Xvgj/h3f4hB6"
+
 nginx_proxy_ide: true
 nginx_proxy_reports: false
 nginx_serve_planemo_machine_web: true
