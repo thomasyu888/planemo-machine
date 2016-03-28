@@ -121,6 +121,9 @@
   sudo: True
   shell: "ln -f -s /usr/bin/nodejs /usr/bin/node"
 
+- name: Create codebox directory
+  file: path={{ codebox_path }} state=directory owner={{ galaxy_user_name }} mode=0775
+  
 - name: Install codebox.
   sudo: True
   sudo_user: "{{ galaxy_user_name }}"

@@ -1,4 +1,4 @@
-codebox_path: "/opt/tools/galaxy/codebox"
+codebox_path: "/opt/codebox"
 codebox_port: 8991
 
 codebox_version: 0.8.1

@@ -1,2 +1,1 @@
-smc_evaluator_path: "/opt/tools/smc-rna/evaluator"
-smc_tophat_path: "/opt/tools/smc-rna/tophat"
+smc_evaluator_path: "/opt/smc-rna/evaluator"
