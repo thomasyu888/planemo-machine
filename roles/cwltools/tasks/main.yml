@@ -5,3 +5,5 @@
 - name: cwl tools
   pip: name=cwl-runner
 
+- name: rabix
+  pip: name=rabix
