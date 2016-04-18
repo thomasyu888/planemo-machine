@@ -7,5 +7,3 @@ if [ $? != "0" ]; then
   sudo bash -c 'echo -e "/dev/sdb\t/opt/tools\text4\tdefaults\t0\t2" >> /etc/fstab'
 fi
 sudo chown -R ubuntu:ubuntu /opt/tools
-
-sudo supervisorctl restart galaxy:
