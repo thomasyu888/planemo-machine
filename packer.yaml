@@ -84,7 +84,7 @@ builders:
   project_id: '{{user `gce_project_id`}}'
   source_image: '{{user `gce_source_image`}}'
   zone: '{{user `gce_zone`}}'
-  image_name: planemo-machine-{{timestamp}}
+  image_name: planemo-rna-{{timestamp}}
 
 post-processors:
 - type: vagrant
