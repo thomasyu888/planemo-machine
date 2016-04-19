@@ -130,7 +130,7 @@
       "zone": "{{user `gce_zone`}}", 
       "project_id": "{{user `gce_project_id`}}", 
       "type": "googlecompute", 
-      "image_name": "planemo-machine-{{timestamp}}", 
+      "image_name": "planemo-rna-{{timestamp}}", 
       "account_file": "{{user `gce_account_file`}}", 
       "source_image": "{{user `gce_source_image`}}"
     }
