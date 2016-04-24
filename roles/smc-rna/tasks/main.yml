@@ -22,3 +22,12 @@
 
 - name: Add tool directory mounting command
   template: src=gce_mount_tool_disk.j2 dest=/usr/local/bin/gce_mount_tool_disk mode=a+x
+
+- name: Install pyopenssl
+  pip: name=pyopenssl 
+
+- name: Install pyasn1
+  pip: name=pyasn1
+
+- name: Install ndg-httpsclient
+  pip: name=ndg-httpsclient
