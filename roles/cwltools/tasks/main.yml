@@ -8,15 +8,15 @@
 - name: cwltools repo
   git: repo=git://github.com/bmeg/cwltool.git dest={{ smc_cwl_path }} accept_hostkey=yes version=cache-intermediate-output
 
-- name: cwltools install
-  shell: "python {{ smc_cwl_path }}/setup.py install"
-  sudo: True
-  sudo_user: "{{ galaxy_user_name }}"
-
 - name: cwlrunner install
-  shell: "python {{ smc_cwl_path }}/cwl-runner/setup.py install"
+  shell: "cd {{ smc_cwl_path }}/cwl-runner && python setup.py install"
   sudo: True
-  sudo_user: "{{ galaxy_user_name }}"
+  sudo_user: "root"
+
+- name: cwltools install
+  shell: "cd {{ smc_cwl_path }} && python setup.py install"
+  sudo: True
+  sudo_user: "root"
 
 - name: rabix
   pip: name=rabix
