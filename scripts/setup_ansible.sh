@@ -8,5 +8,6 @@ then
     sudo apt-get install -y software-properties-common
     sudo apt-get install -y python-dev
     sudo apt-get install -y python-pip
+    sudo apt-get install -y build-essential libssl-dev libffi-dev
     sudo pip install ansible==1.8.4
 fi

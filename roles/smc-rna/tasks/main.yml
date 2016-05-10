@@ -5,9 +5,6 @@
 - name: Tornado
   pip: name=tornado
 
-- name: six
-  pip: name=six
-
 - include: fusionevaluator.yml
 
 - name: Install fusion evaluator
