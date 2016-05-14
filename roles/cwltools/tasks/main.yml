@@ -1,22 +1,8 @@
-
 - name: setuptools
   shell: "easy_install -U setuptools"
 
 - name: cwl tools
   pip: name=cwl-runner
-
-- name: cwltools repo
-  git: repo=git://github.com/bmeg/cwltool.git dest={{ smc_cwl_path }} accept_hostkey=yes version=cache-intermediate-output
-
-- name: cwlrunner install
-  shell: "cd {{ smc_cwl_path }}/cwl-runner && python setup.py install"
-  sudo: True
-  sudo_user: "root"
-
-- name: cwltools install
-  shell: "cd {{ smc_cwl_path }} && python setup.py install"
-  sudo: True
-  sudo_user: "root"
 
 - name: rabix
   pip: name=rabix
