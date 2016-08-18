@@ -158,22 +158,12 @@
   become: True
   shell: "ln -f -s /usr/bin/nodejs /usr/bin/node"
 
-<<<<<<< HEAD
-- name: Create codebox directory
-  file: path={{ codebox_path }} state=directory owner={{ galaxy_user_name }} mode=0775
-  
-- name: Install codebox.
-  sudo: True
-  sudo_user: "{{ galaxy_user_name }}"
-  shell: "mkdir -p {{ codebox_path }} && cd {{ codebox_path }} && npm install codebox@{{ codebox_version }}"
-=======
 - name: Install more locales
   locale_gen: name={{ item }} state=present
   with_items:
     - en_US.UTF-8
     - en_GB.UTF-8
     - de_DE.UTF-8
->>>>>>> 29674850de85a7588d0a374110f2436ec5563ca5
 
 - name: Deactivate auto updates
   become: True

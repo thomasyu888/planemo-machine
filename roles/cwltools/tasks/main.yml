@@ -2,7 +2,7 @@
   shell: "easy_install -U setuptools"
 
 - name: cwl tools
-  pip: name=cwl-runner
+  pip: name=cwlref-runner
 
 - name: rabix
   pip: name=rabix
