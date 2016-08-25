@@ -5,12 +5,12 @@
     "gce_account_file": "gce_account.json", 
     "docker_autostart": "true", 
     "docker_export_path": "", 
-    "gce_source_image": "ubuntu-1604-xenial-v20160429", 
+    "gce_source_image": "ubuntu-1404-trusty-v20160809a", 
     "ami_region": "us-east-1", 
     "password": "ubuntu", 
     "ami_access_key": "", 
     "ami_name": "galaxydev {{timestamp}}", 
-    "docker_base": "ubuntu:xenial", 
+    "docker_base": "ubuntu:trusty", 
     "include_x": "false", 
     "gce_project_id": "galaxydev", 
     "ami_instance_type": "t1.micro", 
@@ -30,10 +30,10 @@
   "builders": [
     {
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso", 
-      "iso_url": "http://releases.ubuntu.com/16.04/ubuntu-16.04-server-amd64.iso", 
+      "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04.4-server-amd64.iso", 
       "ssh_port": 22, 
       "ssh_username": "{{ user `username` }}", 
-      "iso_checksum_type": "sha256", 
+      "iso_checksum_type": "md5", 
       "virtualbox_version_file": ".vbox_version", 
       "shutdown_command": "echo 'shutdown -P now' > shutdown.sh; echo '{{ user `username` }}'|sudo -S sh 'shutdown.sh'", 
       "vboxmanage": [
@@ -93,10 +93,10 @@
     }, 
     {
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso", 
-      "iso_url": "http://releases.ubuntu.com/16.04/ubuntu-16.04-server-amd64.iso", 
+      "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04.4-server-amd64.iso", 
       "ssh_port": 22, 
       "ssh_username": "{{ user `username` }}", 
-      "iso_checksum_type": "sha256", 
+      "iso_checksum_type": "md5", 
       "virtualbox_version_file": ".vbox_version", 
       "shutdown_command": "echo 'shutdown -P now' > shutdown.sh; echo '{{ user `username` }}'|sudo -S sh 'shutdown.sh'", 
       "vboxmanage": [

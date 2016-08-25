@@ -4,8 +4,8 @@
 # TODO: break into smaller tasks - such as configuring all X stuff with a
 # single command.
 
-- name: Upgrade the system
-  apt: upgrade=dist
+#- name: Upgrade the system
+#  apt: upgrade=dist
 
 - name: Install the debs
   apt: name={{ item }} state=latest update_cache=yes
@@ -24,13 +24,6 @@
     - zlib1g-dev
     - python-dev
     - cmake
-    - tmux
-    - update-motd
-    - vim
-    - emacs24-nox
-    - supervisor
-    - nodejs
-    - npm
 
 # Setup atom (https://atom.io/) ppa and install.
 - name: Add custom Galaxy PPA (used for atom package)
@@ -147,13 +140,6 @@
     - nodejs
     - npm
 
-- name: Start supervisord on boot
-  service: name=supervisor enabled=yes
-
-- name: activate supervisor on boot, the shell way
-  become: True
-  shell: "systemctl enable supervisor.service"
-
 - name: Link nodejs to node
   become: True
   shell: "ln -f -s /usr/bin/nodejs /usr/bin/node"
@@ -165,10 +151,6 @@
     - en_GB.UTF-8
     - de_DE.UTF-8
 
-- name: Deactivate auto updates
-  become: True
-  become_user: "{{ galaxy_user_name }}"
-  shell: "gsettings set org.gnome.settings-daemon.plugins.updates active false && gsettings set org.gnome.settings-daemon.plugins.updates auto-download-updates false"
 
 - name: Add dev tool configuration file.
   template: src=dev_tool_conf.xml.j2 dest={{ dev_tool_conf }}
@@ -183,37 +165,3 @@
 
 - name: "Install Galaxy management scripts."
   template: src=restart_galaxy.j2 dest=/usr/local/bin/restart_galaxy mode=a+x
-
-- name: "Eliminate unnecessary notifications on login."
-  become: True
-  shell: "rm -f /etc/update-motd.d/9*"
-
-- name: "Ensure that planemo-machine's environment settings are applied."
-  lineinfile: dest={{ dev_user_home }}/.bashrc line='[[ -f $HOME/.planemo-machine ]] && . $HOME/.planemo-machine'
-
-- name: "Add the local environment settings."
-  template: src=planemo-machine.sh.j2 dest={{ dev_user_home }}/.planemo-machine
-
-- name: "Update login notifications."
-  become: True
-  shell: "/usr/sbin/update-motd"
-
-- name: Ensure existence of .config directory
-  file: path={{ dev_user_home }}/.config/ state=directory owner={{ dev_user_name }} group={{ dev_user_group }}
-
-- name: Ensure existence of target directory for next step.
-  file: path={{ dev_user_home }}/.config/xfce4/xfconf/xfce-perchannel-xml state=directory owner={{ dev_user_name }} group={{ dev_user_group }}
-
-- name: Download miniconda
-  become: True
-  become_user: "{{ dev_user_name }}"
-  shell: "cd {{ dev_user_home }} && curl https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -L -o miniconda.sh && bash miniconda.sh -b"
-
-- name: Add miniconda bin to PATH.
-  lineinfile: "dest={{ dev_user_shellrc }} line='export PATH=$PATH:{{ dev_user_home }}/miniconda2/bin/'"
-
-- name: "Add the keyboard layout switcher to the panel."
-  template: src=xfce4-panel.xml.j2 dest={{ dev_user_home }}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
-  become: True
-  become_user: "{{ dev_user_name }}"
-  when: galaxy_devbox_include_x
