@@ -5,7 +5,7 @@ dpkg -s ansible > /dev/null 2>&1
 if [ $? -ne 0 ];
 then
     sudo apt-get update -y
-    sudo apt-get install -y software-properties-
+    sudo apt-get install -y software-properties-common
     sudo apt-get install -y build-essential libssl-dev libffi-dev
     sudo apt-get install -y python-dev
     sudo apt-get install -y python-pip
